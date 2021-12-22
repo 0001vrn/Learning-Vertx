@@ -23,12 +23,15 @@ To run your application:
 
 == Building using Docker
 
-# Create a fat jar
-# Build docker image
+* Create a fat jar
+```
+./gradlew clean shadowJar
+```
+* Build docker image
 ```
 docker run build -t learningVertx .
 ```
-# Run app using docker
+* Run app using docker
 ```
 docker run -p 8080:8080 -it --rm learningVertx
 ```
