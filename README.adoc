@@ -23,12 +23,12 @@ To run your application:
 
 == Building using Docker
 
-1. Create a fat jar
-2. Build docker image
+# Create a fat jar
+# Build docker image
 ```
 docker run build -t learningVertx .
 ```
-3. Run app using docker
+# Run app using docker
 ```
 docker run -p 8080:8080 -it --rm learningVertx
 ```
