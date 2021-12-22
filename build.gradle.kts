@@ -19,7 +19,8 @@ val vertxVersion = "4.2.3"
 val junitJupiterVersion = "5.8.2"
 
 val mainVerticleName = "com.example.learningVertx.MainVerticle"
-val launcherClassName = "io.vertx.core.Launcher"
+val launcherClassName = "com.example.learningVertx.Launcher"
+val jarFileName = "learning-vertx-app.jar"
 
 val watchForChange = "src/**/*"
 val doOnChange = "${projectDir}/gradlew classes"
@@ -50,6 +51,7 @@ tasks.withType<ShadowJar> {
     attributes(mapOf("Main-Verticle" to mainVerticleName))
   }
   mergeServiceFiles()
+  archiveFileName.set(jarFileName)
 }
 
 tasks.withType<Test> {

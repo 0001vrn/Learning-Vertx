@@ -2,8 +2,6 @@ package com.example.learningVertx
 
 import io.vertx.core.*
 import io.vertx.ext.web.Router
-import io.vertx.micrometer.MicrometerMetricsOptions
-import io.vertx.micrometer.VertxPrometheusOptions
 
 import com.example.learningVertx.routes.AccessLogs
 import com.example.learningVertx.routes.Default
@@ -11,17 +9,6 @@ import com.example.learningVertx.routes.HealthCheck
 import com.example.learningVertx.routes.Metrics
 
 class MainVerticle : AbstractVerticle() {
-
-  override fun init(vertx: Vertx?, context: Context?) {
-    val updatedVertx = Vertx.vertx(
-      VertxOptions().setMetricsOptions(
-        MicrometerMetricsOptions().setPrometheusOptions(
-          VertxPrometheusOptions().setEnabled(true)
-        ).setEnabled(true)
-      )
-    )
-    super.init(updatedVertx, context)
-  }
 
   override fun start(startPromise: Promise<Void>) {
     val router = Router.router(vertx)

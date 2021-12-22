@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17
 
-ENV VERTICLE_FILE LearningVertx-1.0.0-SNAPSHOT-fat.jar
+ENV VERTICLE_FILE learning-vertx-app.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
