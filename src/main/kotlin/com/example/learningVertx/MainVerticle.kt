@@ -32,7 +32,7 @@ class MainVerticle : AbstractVerticle() {
       .requestHandler(Metrics(router).router)
       .requestHandler(Default(router).router)
       .requestHandler(router)
-      .listen(config().getInteger("http.port", 8080)) { http ->
+      .listen(8080) { http ->
         if (http.succeeded()) {
           startPromise.complete()
           println("HTTP server started on port ${config().getInteger("http.port")}")
