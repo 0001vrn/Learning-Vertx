@@ -15,8 +15,8 @@ repositories {
   mavenCentral()
 }
 
-val vertxVersion = "4.2.2"
-val junitJupiterVersion = "5.7.0"
+val vertxVersion = "4.2.3"
+val junitJupiterVersion = "5.8.2"
 
 val mainVerticleName = "com.example.learningVertx.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"

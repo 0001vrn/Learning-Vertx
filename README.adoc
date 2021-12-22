@@ -1,24 +1,36 @@
 = Learningvertx
 
-image:https://img.shields.io/badge/vert.x-4.2.2-purple.svg[link="https://vertx.io"]
+image:https://img.shields.io/badge/vert.x-4.2.3-purple.svg[link="https://vertx.io"]
 
 This application was generated using http://start.vertx.io
 
-== Building
+== Building on Local
 
 To launch your tests:
 ```
 ./gradlew clean test
 ```
 
-To package your application:
+To package your application(fat jar):
 ```
-./gradlew clean assemble
+./gradlew clean shadowJar
 ```
 
 To run your application:
 ```
 ./gradlew clean run
+```
+
+== Building using Docker
+
+1. Create a fat jar
+2. Build docker image
+```
+docker run build -t learningVertx .
+```
+3. Run app using docker
+```
+docker run -p 8080:8080 -it --rm learningVertx
 ```
 
 == Help
