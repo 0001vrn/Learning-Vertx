@@ -32,6 +32,7 @@ dependencies {
   implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
   implementation("io.vertx:vertx-web")
   implementation("io.vertx:vertx-lang-kotlin")
+  implementation("io.vertx:vertx-config:$vertxVersion")
   implementation(kotlin("stdlib-jdk8"))
   implementation("io.vertx:vertx-health-check:$vertxVersion")
   implementation("io.vertx:vertx-micrometer-metrics:$vertxVersion")

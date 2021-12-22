@@ -2,12 +2,13 @@ package com.example.learningVertx
 
 import io.vertx.core.*
 import io.vertx.ext.web.Router
-import io.vertx.ext.web.handler.LoggerHandler
 import io.vertx.micrometer.MicrometerMetricsOptions
-import io.vertx.micrometer.PrometheusScrapingHandler
 import io.vertx.micrometer.VertxPrometheusOptions
 
+import com.example.learningVertx.routes.AccessLogs
+import com.example.learningVertx.routes.Default
 import com.example.learningVertx.routes.HealthCheck
+import com.example.learningVertx.routes.Metrics
 
 class MainVerticle : AbstractVerticle() {
 
@@ -24,18 +25,17 @@ class MainVerticle : AbstractVerticle() {
 
   override fun start(startPromise: Promise<Void>) {
     val router = Router.router(vertx)
-    router.route().handler(LoggerHandler.create())
-    HealthCheck(router, vertx)
-    router["/metrics"].handler(PrometheusScrapingHandler.create())
-    router["/"].handler { rc -> rc.response().end("Hello from Vert.x")}
-
     vertx
       .createHttpServer()
+      .requestHandler(AccessLogs(router).router)
+      .requestHandler(HealthCheck(router, vertx).router)
+      .requestHandler(Metrics(router).router)
+      .requestHandler(Default(router).router)
       .requestHandler(router)
-      .listen(8080) { http ->
+      .listen(config().getInteger("http.port", 8080)) { http ->
         if (http.succeeded()) {
           startPromise.complete()
-          println("HTTP server started on port 8888")
+          println("HTTP server started on port ${config().getInteger("http.port")}")
         } else {
           startPromise.fail(http.cause())
         }
