@@ -29,11 +29,11 @@ Create a fat jar
 ```
 Build docker image
 ```
-docker build -t learningvertx .
+docker build -t learning-vertx .
 ```
 Run app using docker
 ```
-docker run -p 8080:8080 -it --rm learningvertx
+docker run -p 8080:8080 -it --rm learning-vertx
 ```
 
 == Help

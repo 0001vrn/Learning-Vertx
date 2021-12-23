@@ -18,8 +18,12 @@ class Launcher {
         .setEnabled(true)
       val vertx: Vertx = Vertx.vertx(VertxOptions().setMetricsOptions(options))
 
-      vertx.deployVerticle(MainVerticle())
-
+      try {
+        vertx.deployVerticle(MainVerticle())
+      } catch (exception: Throwable) {
+        println("Couldn't start the app")
+        exception.printStackTrace()
+      }
     }
   }
 }
